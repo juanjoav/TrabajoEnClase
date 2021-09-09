@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class User {
 
@@ -30,7 +31,16 @@ public class User {
         return gender;
     }
 
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
     public GPS getGps() {
         return gps;
+    }
+
+    public int getAge(){
+        return Period.between(getBirthDate(),LocalDate.now() ).getYears();
     }
 }

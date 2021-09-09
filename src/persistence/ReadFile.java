@@ -36,11 +36,10 @@ public class ReadFile {
 
             GPS gps = new GPS(latitude,longitude);
             User user = new User(name,id,date,gender,gps);
-            System.out.println(user.getName());
-            System.out.println(user.getGps().getLatitude());
             usersList.addElement(user);
         }
         myFile.close();
+
     }
 
     public Gender obtainGender(int gender) {
@@ -57,7 +56,4 @@ public class ReadFile {
         return usersList;
     }
 
-    public static void main(String[] args) {
-        ReadFile readFile= new ReadFile("plane/Users.csv");
-    }
 }

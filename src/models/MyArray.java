@@ -168,19 +168,18 @@ public class MyArray<T>{
 
     /**
      * Metodo de busqueda binario
-     * @param search valor a buscar
      * @param iCriteria criterio d busqueda
      * @return falso si no se encuentra y true si se encuentra
      */
-    public boolean binarySearch(T search,ICriteria<T> iCriteria){
+    public boolean binarySearch(ICriteria<T> iCriteria){
         int start = 0;
         int end = datas.length-1;
 
         while(start <= end) {
             int mid = (start + end)/2;
-            if (iCriteria.compareTo(datas[mid],search)) {
+            if (iCriteria.find(datas[mid])) {
                 return true;
-            } else if (iCriteria.verification(datas[mid],search)) {
+            } else if (iCriteria.find(datas[mid])) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
