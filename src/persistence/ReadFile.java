@@ -1,6 +1,7 @@
 package persistence;
 
 import models.Gender;
+import models.User;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,6 +26,11 @@ public class ReadFile {
             long id = Long.parseLong(cyclistAttributes[1]);
             String name = cyclistAttributes[2] + cyclistAttributes[3];
             Gender gender = obtainGender(Integer.parseInt(cyclistAttributes[4]));
+            LocalDate date = Components.toStringReadLocalDate(cyclistAttributes[5]);
+
+            User user = new User(name,id,date,gender);
+            System.out.println(user.getName());
+
         }
         myFile.close();
     }
@@ -37,5 +43,9 @@ public class ReadFile {
                     return Gender.FEMALE;
         }
         return Gender.OTHER;
+    }
+
+    public static void main(String[] args) {
+        ReadFile readFile= new ReadFile("plane/Users.csv");
     }
 }

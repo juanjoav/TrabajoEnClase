@@ -1,6 +1,8 @@
 package models;
 
-import excepcion.LessData;
+
+import excepcion.*;
+
 
 import java.util.Comparator;
 
