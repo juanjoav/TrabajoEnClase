@@ -16,5 +16,15 @@ public class User {
         this.gender = gender;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public long getId() {
+        return id;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
 }

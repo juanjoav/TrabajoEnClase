@@ -6,8 +6,6 @@
 
 package persistence;
 
-import utils.Utilities;
-
 import java.io.IOException;
 import java.util.Properties;
 
