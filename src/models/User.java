@@ -6,14 +6,16 @@ public class User {
 
     private String name;
     private long id;
-    LocalDate birthDate;
-    Gender gender;
+    private LocalDate birthDate;
+    private Gender gender;
+    private GPS gps;
 
-    public User(String name, long id, LocalDate birthDate, Gender gender) {
+    public User(String name, long id, LocalDate birthDate, Gender gender, GPS gps) {
         this.name = name;
         this.id = id;
         this.birthDate = birthDate;
         this.gender = gender;
+        this.gps = gps;
     }
 
     public String getName() {
@@ -26,5 +28,9 @@ public class User {
 
     public Gender getGender() {
         return gender;
+    }
+
+    public GPS getGps() {
+        return gps;
     }
 }

@@ -1,6 +1,8 @@
 package persistence;
 
+import models.GPS;
 import models.Gender;
+import models.MyArray;
 import models.User;
 
 import java.time.LocalDate;
@@ -10,9 +12,11 @@ public class ReadFile {
 
     private MyFile myFile;
     private MyFile rejectedUser;
+    private MyArray<User> usersList;
 
     public ReadFile(String file) {
         myFile = new MyFile(file);
+        usersList = new MyArray();
         getMyFile(myFile);
     }
 
@@ -27,10 +31,14 @@ public class ReadFile {
             String name = cyclistAttributes[2] + cyclistAttributes[3];
             Gender gender = obtainGender(Integer.parseInt(cyclistAttributes[4]));
             LocalDate date = Components.toStringReadLocalDate(cyclistAttributes[5]);
+            String latitude = cyclistAttributes[6];
+            String longitude = cyclistAttributes[7];
 
-            User user = new User(name,id,date,gender);
+            GPS gps = new GPS(latitude,longitude);
+            User user = new User(name,id,date,gender,gps);
             System.out.println(user.getName());
-
+            System.out.println(user.getGps().getLatitude());
+            usersList.addElement(user);
         }
         myFile.close();
     }
@@ -43,6 +51,10 @@ public class ReadFile {
                     return Gender.FEMALE;
         }
         return Gender.OTHER;
+    }
+
+    public MyArray<User> getUsersList() {
+        return usersList;
     }
 
     public static void main(String[] args) {
